@@ -1,27 +1,33 @@
 # DriftCatcher: A GitOps Control Plane for Komodo
 
+[![GitOps](https://img.shields.io/badge/GitOps-Declarative%20Infra-0A7ACC?style=for-the-badge&logo=git&logoColor=white)]()
+[![Komodo](https://img.shields.io/badge/Komodo-Automation%20Engine-6E40C9?style=for-the-badge&logo=replit&logoColor=white)]()
+[![Cloud Infrastructure](https://img.shields.io/badge/Infrastructure-Drift%20Control-4CAF50?style=for-the-badge&logo=cloudflare&logoColor=white)]()
+[![Security](https://img.shields.io/badge/Security-Immutable%20Source%20of%20Truth-2BAF2B?style=for-the-badge&logo=shield&logoColor=white)]()
+
 **DriftCatcher** serves as the GitOps control center for managing infrastructure and application states using [Komodo](https://komo.do/docs/intro). It enforces a declarative, immutable source of truth across all environments by leveraging Git’s orphan branch model to logically separate and independently manage distinct infrastructure resource types.
 
 This repository deviates from the traditional trunk-based Git workflow. Instead, it employs **orphan branches** to segregate definitions by domain (e.g., servers, builds, syncs, procedures, stacks). This clean separation ensures robust drift prevention, enhanced auditability, and fine-grained automation triggers.
 
 ---
 
-## 📑 Table of Contents
+## 📑 Table of Contents <a id="table-of-contents"></a>
 
-- [Requirements](#-requirements)
-- [Purpose](#-purpose)
-- [Key Benefits](#-key-benefits)
-- [Architecture Overview](#-architecture-overview)
-- [Repository Layout](#-repository-layout)
-- [Why Orphan Branches?](#-why-orphan-branches)
-- [Operational Flow](#-operational-flow)
-- [Creating a New Stack](#️-creating-a-new-stack)
-- [Best Practices](#-best-practices)
-- [Troubleshooting](#-troubleshooting)
+- [Requirements](#requirements)
+- [Purpose](#purpose)
+- [Key Benefits](#key-benefits)
+- [Architecture Overview](#architecture-overview)
+- [Repository Layout](#repository-layout)
+- [Why Orphan Branches?](#why-orphan-branches)
+- [Operational Flow](#operational-flow)
+- [Creating a New Stack](#creating-a-new-stack)
+  - [Step-by-Step](#step-by-step)
+- [Best Practices](#best-practices)
+- [Troubleshooting](#troubleshooting)
 
 ---
 
-## ⚙️ Requirements
+## ⚙️ Requirements <a id="requirements"></a>
 
 - **Git Server** with webhook support (GitHub, GitLab, Gitea, etc.)
 - **Komodo** installed and configured to connect to your Git repository
@@ -29,7 +35,7 @@ This repository deviates from the traditional trunk-based Git workflow. Instead,
 
 ---
 
-## 📌 Purpose
+## 📌 Purpose <a id="purpose"></a>
 
 DriftCatcher is designed to **eliminate infrastructure and deployment drift** by ensuring that all configurations—from stack definitions to resource synchronization policies—are **declaratively defined in Git** and automatically enforced using **Komodo**.
 
@@ -37,7 +43,7 @@ Whenever a developer, operator, or automation system pushes a change to one of t
 
 ---
 
-## 🚀 Key Benefits
+## 🚀 Key Benefits <a id="key-benefits"></a>
 
 | Benefit                         | Description                                                                                     |
 | ------------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -49,7 +55,7 @@ Whenever a developer, operator, or automation system pushes a change to one of t
 
 ---
 
-## 🧭 Architecture Overview
+## 🧭 Architecture Overview <a id="architecture-overview"></a>
 
 ```mermaid
 graph LR
@@ -63,7 +69,7 @@ graph LR
 
 ---
 
-## 📂 Repository Layout
+## 📂 Repository Layout <a id="repository-layout"></a>
 
 This repository follows a **structured orphan-branch layout**, diverging from the traditional folder-based structure. Each branch is isolated and self-contained, tracking only the resources pertinent to its domain.
 
@@ -94,7 +100,7 @@ graph TD
 
 ---
 
-## 🧩 Why Orphan Branches?
+## 🧩 Why Orphan Branches? <a id="why-orphan-branches"></a>
 
 Orphan branches provide **zero history inheritance**, preventing cross-contamination of Git histories. This approach offers:
 
@@ -105,7 +111,7 @@ Orphan branches provide **zero history inheritance**, preventing cross-contamina
 
 ---
 
-## 🔄 Operational Flow
+## 🔄 Operational Flow <a id="operational-flow"></a>
 
 ```mermaid
 sequenceDiagram
@@ -125,7 +131,7 @@ sequenceDiagram
 
 ---
 
-## 🛠️ Creating a New Stack
+## 🛠️ Creating a New Stack <a id="creating-a-new-stack"></a>
 
 ```mermaid
 flowchart LR
@@ -136,7 +142,7 @@ flowchart LR
   E --> F[Komodo triggers deployment]
 ```
 
-### Step-by-Step
+### Step-by-Step <a id="step-by-step"></a>
 
 1. **Create a new orphan branch:**
 
@@ -199,18 +205,18 @@ flowchart LR
 
 ---
 
-## 📊 Best Practices
+## 📊 Best Practices <a id="best-practices"></a>
 
-- ✅ Use `--orphan` when creating new branches
-- ✅ Use meaningful branch names: `Stacks-<server>-<service>`
-- ✅ Commit only declarative resources
-- ❌ Never commit secrets or credentials
-- ✅ Document major infrastructure changes
-- ✅ Use signed commits if possible
+- ✅ Use `--orphan` when creating new branches  
+- ✅ Use meaningful branch names: `Stacks-<server>-<service>`  
+- ✅ Commit only declarative resources  
+- ❌ Never commit secrets or credentials  
+- ✅ Document major infrastructure changes  
+- ✅ Use signed commits if possible  
 
 ---
 
-## 🧪 Troubleshooting
+## 🧪 Troubleshooting <a id="troubleshooting"></a>
 
 | Problem                        | Solution                                                           |
 | ------------------------------ | ------------------------------------------------------------------ |
@@ -221,4 +227,6 @@ flowchart LR
 | Secrets accidentally committed | Rotate them immediately and use `.gitignore` with secure workflows |
 
 ---
+
+[⬆️ Back to Top](#table-of-contents)
 **THIS REPOSITORY IS ENCRYPTED. IF YOU'RE HERE, YOU'RE EITHER VERY BRAVE OR VERY LOST. EITHER WAY, GOOD LUCK!**
